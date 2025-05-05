@@ -1,233 +1,209 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FLYKc - Energia e Foco</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLYKc | Apresentação para Investidores</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #0e0e0e;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
+        .navbar {
+            background-color: #111;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
 
-    header {
-      background-color: #111;
-      padding: 20px 40px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #a020f0;
-    }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 28px;
-      color: #a020f0;
-    }
+        .navbar li {
+            margin: 0 10px;
+        }
 
-    nav {
-      display: flex;
-      gap: 20px;
-    }
+        .navbar a {
+            color: #00ffe1;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            background-color: #141414;
+        }
 
-    nav a:hover {
-      color: #a020f0;
-    }
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #00ffe1;
+        }
 
-    .btn-primary, .btn-secondary {
-      padding: 12px 28px;
-      background-color: #a020f0;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: bold;
-    }
+        .section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-in;
+        }
 
-    .btn-primary:hover, .btn-secondary:hover {
-      background-color: #c33cff;
-      transform: scale(1.05);
-    }
+        h2 {
+            color: #00ffe1;
+            margin-bottom: 15px;
+        }
 
-    .btn-secondary {
-      margin-top: 20px;
-      font-size: 1rem;
-      animation: pulse 2s infinite;
-    }
+        ul {
+            padding-left: 20px;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+        .btn {
+            display: inline-block;
+            background-color: #00ffe1;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
 
-    .hero {
-      height: 100vh;
-      background: linear-gradient(to right, #1a1a1a, #0e0e0e);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 100px 20px 40px;
-    }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            background-color: #111;
+            color: #aaa;
+        }
 
-    .hero h2 {
-      font-size: 3em;
-      color: #a020f0;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin-bottom: 30px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease-out;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-title {
-      font-size: 2.5em;
-      text-align: center;
-      margin-bottom: 30px;
-      color: #fff;
-    }
-
-    .section-content {
-      text-align: center;
-      font-size: 1.1em;
-      color: #ccc;
-    }
-
-    footer {
-      background-color: #111;
-      text-align: center;
-      padding: 30px 20px;
-      color: #aaa;
-      font-size: 0.9em;
-      margin-top: 60px;
-      border-top: 1px solid #333;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-      }
-
-      .hero h2 {
-        font-size: 2em;
-      }
-
-      .section-title {
-        font-size: 2em;
-      }
-    }
-  </style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>FLYKc</h1>
-    <nav>
-      <a href="#produtos">Produtos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#comunidade">Comunidade</a>
-      <a href="#parcerias">Parcerias</a>
-      <a href="#comprar" class="btn-primary">Pré-venda</a>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#problema">Problema</a></li>
+            <li><a href="#solucao">Solução</a></li>
+            <li><a href="#mvp">Produto</a></li>
+            <li><a href="#tecnologia">Tecnologia</a></li>
+            <li><a href="#negocio">Negócio</a></li>
+            <li><a href="#validacao">Validação</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#time">Time</a></li>
+            <li><a href="#investimento">Investimento</a></li>
+        </ul>
     </nav>
-  </header>
 
-  <section class="hero">
-    <h2>FOCO MÁXIMO. ENERGIA INTELIGENTE.</h2>
-    <p>Suplemento premium para quem vive no limite do desempenho. FLYKc CAPS chegou para elevar seu nível.</p>
-    <div class="buttons">
-      <button class="btn-primary">EXPERIMENTE</button>
-      <button class="btn-primary">VEJA COMO FUNCIONA</button>
-    </div>
-    <button class="btn-secondary">Garanta o SEU Produto de acordo com suas necessidades</button>
-  </section>
+    <header>
+        <h1>FLYKc</h1>
+        <p>Suplementação Personalizada com Inteligência Artificial</p>
+    </header>
 
-  <section id="produtos">
-    <h3 class="section-title">FLYKc CAPS</h3>
-    <p class="section-content">Fórmula com cafeína + L-teanina. Energia limpa, foco total, desempenho extremo.</p>
-  </section>
+    <section class="section" id="problema">
+        <h2>O Problema</h2>
+        <p>Suplementos genéricos ignoram a individualidade do consumidor. Isso gera baixa eficácia e alta rotatividade de clientes.</p>
+    </section>
 
-  <section id="sobre">
-    <h3 class="section-title">Sobre a FLYKc</h3>
-    <p class="section-content">Nascemos para impulsionar mentes criativas e corpos em movimento. Somos performance com propósito.</p>
-  </section>
+    <section class="section" id="solucao">
+        <h2>Nossa Solução</h2>
+        <p>Com IA, criamos fórmulas sob medida com base em dados pessoais, objetivos e rotina do usuário. Tudo aprovado pela ciência.</p>
+    </section>
 
-  <section id="comunidade">
-    <h3 class="section-title">Comunidade FLYKc</h3>
-    <p class="section-content">Junte-se à tribo. Use #voecomFLYKc e apareça aqui.</p>
-  </section>
+    <section class="section" id="mvp">
+        <h2>Produto Inicial (MVP)</h2>
+        <p>Lançamos o FLYKc FLEX: cápsulas de foco e energia com Cafeína + Taurina. Produção terceirizada e modelo dropshipping validado.</p>
+    </section>
 
-  <section id="parcerias">
-    <h3 class="section-title">Parcerias e Influenciadores</h3>
-    <p class="section-content">Seja um embaixador FLYKc. Ganhe comissão, brindes e faça parte do futuro.</p>
-  </section>
+    <section class="section" id="tecnologia">
+        <h2>Plataforma Tecnológica</h2>
+        <ul>
+            <li>Backend: Flask (Python)</li>
+            <li>APIs: OpenAI, USDA, Correios, Mercado Pago, Mailchimp, Google Analytics</li>
+            <li>Painel administrativo leve e eficiente</li>
+        </ul>
+    </section>
 
-  <footer>
-    &copy; 2025 FLYKc Suplementos. Todos os direitos reservados.
-  </footer>
+    <section class="section" id="negocio">
+        <h2>Modelo de Negócio</h2>
+        <p>Assinaturas personalizadas, vendas diretas com margem alta, revenda via influenciadores e colabs com atletas.</p>
+    </section>
 
-  <script>
-    // Scroll reveal simples
-    const sections = document.querySelectorAll('section');
+    <section class="section" id="validacao">
+        <h2>Validação de Mercado</h2>
+        <p>+200 cadastros em 30 dias | Influenciadores interessados | Parcerias em negociação | MVP com baixo custo validado</p>
+    </section>
 
-    const revealOnScroll = () => {
-      const triggerBottom = window.innerHeight * 0.85;
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < triggerBottom) {
-          section.classList.add('visible');
-        }
-      });
-    };
+    <section class="section" id="roadmap">
+        <h2>Roadmap</h2>
+        <ul>
+            <li><strong>Q2:</strong> Lançamento FLEX, primeiros influenciadores</li>
+            <li><strong>Q3:</strong> Plataforma de personalização via IA</li>
+            <li><strong>Q4:</strong> Expansão de linha e entrada em marketplaces</li>
+            <li><strong>Q1/2026:</strong> Internacionalização e app mobile</li>
+        </ul>
+    </section>
 
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
-  </script>
+    <section class="section" id="time">
+        <h2>Nosso Time</h2>
+        <p><strong>Fundador:</strong> CEO & Produto | <strong>Nutricionista Parceira:</strong> Validação científica | <strong>Dev:</strong> Plataforma & APIs</p>
+    </section>
+
+    <section class="section" id="investimento">
+        <h2>Investimento</h2>
+        <p>Buscamos R$ 100.000 para escalar produção, IA, marketing e parcerias.</p>
+        <ul>
+            <li>R$ 30.000: Produção</li>
+            <li>R$ 9.000: Marketing</li>
+            <li>R$ 15.000: Plataforma</li>
+            <li>R$ 46.000: Estoque e operação</li>
+        </ul>
+    </section>
+
+    <section class="section" id="cta">
+        <h2>Vamos conversar?</h2>
+        <p>Entre em contato para receber o pitch deck completo e discutir uma possível parceria.</p>
+        <a href="mailto:contato@flykc.com" class="btn">contato@flykc.com</a>
+    </section>
+
+    <footer>
+        <p>© 2025 FLYKc. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll(".section");
+            const options = { threshold: 0.1 };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("fade-in");
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
 </body>
 </html>
